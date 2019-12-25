@@ -6,14 +6,14 @@ request => Spring Data JPA => JPA => Hibernate => JDBC => DB
 
 http json => Controller => Service => Repository => Domain => DB
 
-
+## Domain layer: map entity to database
 
 - Spring generate table for all @Entity
 ```$xslt
     spring.jpa.generate-ddl = true
 ```
 
-- Using naming strategy for table and column
+- Customize naming strategy for table and column
 ```
     spring.jpa.hibernate.naming.implicit-strategy = ben.study.support.BSNamingStrategy
 ```
@@ -44,3 +44,6 @@ http json => Controller => Service => Repository => Domain => DB
 - Inheritance
     @MappedSupperclass
     
+    
+ ## Repository
+ No business logic, just CRUD database

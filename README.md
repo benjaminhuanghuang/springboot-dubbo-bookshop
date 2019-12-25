@@ -18,6 +18,8 @@
 - Config mysql connection in application.properties
 - Create docker-compose.yaml for MySql
 - Add Test: JUnit 5, exclude Junit 4
-- Spring data 
+- Spring JPA: map entity to table, set relations between entities
+- Repository: CRUD database
+  
 
 
