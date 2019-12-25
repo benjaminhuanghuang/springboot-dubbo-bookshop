@@ -17,6 +17,7 @@
 - Create project, add maven dependencies
 - Config mysql connection in application.properties
 - Create docker-compose.yaml for MySql
-- Add Test
+- Add Test: JUnit 5, exclude Junit 4
+- Spring data 
 
 
