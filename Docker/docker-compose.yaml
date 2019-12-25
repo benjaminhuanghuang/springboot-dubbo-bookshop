@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: bookshop
+      MYSQL_USER: bookshopuser
+      MYSQL_PASSWORD: user1234
