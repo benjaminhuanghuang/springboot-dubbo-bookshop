@@ -40,4 +40,7 @@ http json => Controller => Service => Repository => Domain => DB
 
 - Many to Many
     Use intermediary entity
+  
+- Inheritance
+    @MappedSupperclass
     

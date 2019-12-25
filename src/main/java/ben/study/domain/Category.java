@@ -5,11 +5,7 @@ import java.util.List;
 
 @Entity
 //@Table(name = "Categories")
-public class Category {
-    @Id
-    @GeneratedValue   // How to generate PK
-    private Long id;
-
+public class Category extends DomainImpl {
     @Column(name="name", length = 10, nullable = false)
     private String name;
 
@@ -18,14 +14,6 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)   // Don't create extra table
     private List<Book> books;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

@@ -5,11 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Author {
-    @Id
-    @GeneratedValue   // How to generate PK
-    private Long id;
-
+public class Author extends DomainImpl {
     @Column(name="name", length = 10, nullable = false)
     private String name;
 
@@ -21,9 +17,6 @@ public class Author {
 
     @Enumerated(EnumType.STRING)   // to VARCHAR(255)
     private Sex sex;
-    public Long getId() {
-        return id;
-    }
 
     @Embedded
     private Address address;
@@ -34,10 +27,6 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<BookAuthor> books;
 
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
