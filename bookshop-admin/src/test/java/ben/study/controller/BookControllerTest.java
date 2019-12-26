@@ -1,6 +1,8 @@
 package ben.study.controller;
 
 import ben.study.BookShopAdminApplication;
+import ben.study.bto.BookInfo;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,5 +55,21 @@ class BookControllerTest {
                 .andReturn().getResponse().getContentAsString();
 
         System.out.println(result);
+    }
+
+    @Test
+    public void whenGetInfoFail() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/book/a")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().is4xxClientError());
+    }
+
+    @Test
+    public void whenCreateBookSuccess() throws Exception {
+        String input = "{\"name\":\"abcd\",\"id\":null,\"content\":null, \"publishDate\":\"2017-05-05\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/book").content(input)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
     }
 }

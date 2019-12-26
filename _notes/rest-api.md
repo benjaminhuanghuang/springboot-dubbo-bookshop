@@ -40,3 +40,8 @@
         return new ArrayList<BookInfo>();
     }
 ```
+
+## Date
+```$xslt
+    spring.jackson.time-zone = GMT-7
+```
