@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -86,11 +87,19 @@ class BookControllerTest {
     }
 
     @Test
-    public void whenCookieOrHeaderExists() throws Exception{
+    public void whenCookieOrHeaderExists() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/book/1")
                 .cookie(new Cookie("token", "123456"))
                 .header("auth", "asdf")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void whenUploadSuccess() throws Exception {
+        String result = mockMvc.perform(MockMvcRequestBuilders.multipart("/file/upload")
+                .file(new MockMultipartFile("file", "testFile.txt", "multipart/form-data", "Hello".getBytes("UTF-8"))))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString();
     }
 }

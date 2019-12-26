@@ -99,3 +99,14 @@ Customize
     
     }
 ```
+
+## Interceptor
+```$xslt
+    @Component
+    public class TimeInterceptor implements HandlerInterceptor {
+    }
+    
+    public class WebConfig implements WebMvcConfigurer 
+    {
+    }
+```
