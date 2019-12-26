@@ -63,3 +63,39 @@ Read validation from BindingResult
         return info;
     }
 ```
+
+## Pass cookie
+```$xslt
+    public BookInfo getInfo(@PathVariable Long id, @CookieValue String token, @RequestHeader String auth) {
+        System.out.println(id);
+        BookInfo bookInfo = new BookInfo();
+        bookInfo.setName("abcd");
+        return bookInfo;
+    }
+```
+
+
+## Error handling
+Spring default error page
+```$xslt
+    resources/resources/error/404.html
+    resources/resources/error/500.html
+
+```
+Customize
+```$xslt
+    @RestControllerAdvice
+    public class ExceptionHandlerController {
+        @ExceptionHandler(RuntimeException.class)
+        @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+        public Map<String, Object> handlerException(RuntimeException exception)
+        {
+            Map<String, Object> result = new HashMap<>();
+            result.put("result", "fail");
+            result.put("errMsg", exception.getMessage());
+    
+            return result;
+        }
+    
+    }
+```

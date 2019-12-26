@@ -1,9 +1,6 @@
-package ben.study.controller;
+package ben.study.web.controller;
 
 import ben.study.BookShopAdminApplication;
-import ben.study.bto.BookInfo;
-import com.fasterxml.jackson.annotation.JsonView;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,13 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.*;
+import javax.servlet.http.Cookie;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = BookShopAdminApplication.class)
@@ -85,6 +81,15 @@ class BookControllerTest {
     @Test
     public void whenDeleteBookSuccess() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/book/1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void whenCookieOrHeaderExists() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/book/1")
+                .cookie(new Cookie("token", "123456"))
+                .header("auth", "asdf")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

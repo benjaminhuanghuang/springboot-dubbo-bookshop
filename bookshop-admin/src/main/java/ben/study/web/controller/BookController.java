@@ -1,4 +1,4 @@
-package ben.study.controller;
+package ben.study.web.controller;
 
 
 import ben.study.bto.BookCondition;
@@ -24,7 +24,7 @@ public class BookController {
 
     @GetMapping("/{id:\\d+}")   // regex on id
     @JsonView(BookInfo.BookDetailView.class)
-    public BookInfo getInfo(@PathVariable Long id) {
+    public BookInfo getInfo(@PathVariable Long id, @CookieValue String token, @RequestHeader String auth) {
         System.out.println(id);
         BookInfo bookInfo = new BookInfo();
         bookInfo.setName("abcd");
