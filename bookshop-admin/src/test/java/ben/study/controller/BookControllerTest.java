@@ -72,4 +72,20 @@ class BookControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
     }
+
+    @Test
+    public void whenUpdateBookSuccess() throws Exception {
+        String input = "{\"name\":\"abcd\",\"id\":null,\"content\":null, \"publishDate\":\"2017-05-05\"}";
+        mockMvc.perform(MockMvcRequestBuilders.put("/book/1").content(input)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
+    }
+
+    @Test
+    public void whenDeleteBookSuccess() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/book/1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }

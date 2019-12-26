@@ -42,4 +42,19 @@ public class BookController {
         info.setId(1L);
         return info;
     }
+
+    @PutMapping("/{id}")
+    public BookInfo update(@Valid @RequestBody BookInfo info, BindingResult result) {
+        // Validation
+        if(result.hasErrors())
+        {
+            result.getAllErrors().stream().forEach(error-> System.out.println(error.getDefaultMessage()));
+        }
+        info.setId(1L);
+        return info;
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+    }
 }

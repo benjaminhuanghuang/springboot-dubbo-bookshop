@@ -45,3 +45,21 @@
 ```$xslt
     spring.jackson.time-zone = GMT-7
 ```
+
+## Validation
+```$xslt
+   Add @NotBlank to bto class
+```
+Read validation from BindingResult
+```$xslt
+    @PostMapping
+    public BookInfo create(@Valid @RequestBody BookInfo info, BindingResult result) {
+        // Validation
+        if(result.hasErrors())
+        {
+            result.getAllErrors().stream().forEach(error-> System.out.println(error.getDefaultMessage()));
+        }
+        info.setId(1L);
+        return info;
+    }
+```
