@@ -20,6 +20,6 @@
 - Add Test: JUnit 5, exclude Junit 4
 - Spring JPA: map entity to table, set relations between entities
 - Repository: CRUD database, add config into application.properties to show sql detail
-  
+- Restful API
 
 
