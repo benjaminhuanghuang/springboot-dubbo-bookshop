@@ -110,3 +110,16 @@ Customize
     {
     }
 ```
+
+## Async
+```$xslt
+    public Callable<BookInfo> getInfo(@PathVariable Long id, @CookieValue String token, @RequestHeader String auth) {
+        Callable<BookInfo> result = () -> {
+            System.out.println(id);
+            BookInfo bookInfo = new BookInfo();
+            bookInfo.setName("abcd");
+            return bookInfo;
+        };
+        return result;
+    }
+```

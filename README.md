@@ -25,3 +25,4 @@
 - Filter on REST API
 - File upload/download, config file size
 - Http Ansync 
+- Swagger
