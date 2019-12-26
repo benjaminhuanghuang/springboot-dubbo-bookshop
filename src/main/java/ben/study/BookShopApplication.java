@@ -1,9 +1,12 @@
 package ben.study;
 
+import ben.study.support.BookShopRepositoryImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+@EnableJpaRepositories(repositoryBaseClass = BookShopRepositoryImpl.class)
 public class BookShopApplication {
 
     public static void main(String[] args) {

@@ -1,5 +1,5 @@
 # springboot + dubbo分布式微服务实战
-- https://www.bilibili.com/video/av78799315/?spm_id_from=333.788.videocard.0
+- [springboot + dubbo分布式微服务实战](https://www.bilibili.com/video/av78799315)
 
 ## Features
 - Database Design, Spring Boot Repository
@@ -19,7 +19,7 @@
 - Create docker-compose.yaml for MySql
 - Add Test: JUnit 5, exclude Junit 4
 - Spring JPA: map entity to table, set relations between entities
-- Repository: CRUD database
+- Repository: CRUD database, add config into application.properties to show sql detail
   
 
 

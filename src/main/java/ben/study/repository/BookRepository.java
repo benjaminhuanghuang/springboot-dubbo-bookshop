@@ -9,5 +9,7 @@ import ben.study.domain.Book;
 
 public interface BookRepository  extends Repository<Book, Long> {
     List<Book> findByName(String name);
+
+    List<Book> findByNameAndCategoryName(String name, String categoryName);
 }
 

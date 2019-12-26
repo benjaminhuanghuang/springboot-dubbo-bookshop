@@ -6,12 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springboot-dubbo-bookshop" />
+        <module name="bookshop-admin" />
+        <module name="bookshop-web" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bookshop-admin" options="-parameters" />
+      <module name="bookshop-web" options="-parameters" />
       <module name="springboot-dubbo-bookshop" options="-parameters" />
     </option>
   </component>
