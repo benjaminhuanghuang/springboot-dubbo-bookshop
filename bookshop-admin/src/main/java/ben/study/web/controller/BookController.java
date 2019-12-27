@@ -28,15 +28,20 @@ public class BookController {
     @GetMapping("/{id:\\d+}")   // regex on id
     @JsonView(BookInfo.BookDetailView.class)
     @ApiOperation("Get book information")
-    public Callable<BookInfo> getInfo(@ApiParam("Book id") @PathVariable Long id, @CookieValue String token, @RequestHeader String auth) {
-        Callable<BookInfo> result = () -> {
-            System.out.println(id);
-            BookInfo bookInfo = new BookInfo();
-            bookInfo.setName("abcd");
-            return bookInfo;
-        };
-        return result;
+    public BookInfo getInfo(@ApiParam("Book id") @PathVariable Long id) {//,@CookieValue String token, @RequestHeader String auth) {
+        BookInfo bookInfo = new BookInfo();
+        bookInfo.setName("abcd");
+        return bookInfo;
     }
+//    public Callable<BookInfo> getInfo(@ApiParam("Book id") @PathVariable Long id) {//,@CookieValue String token, @RequestHeader String auth) {
+//        Callable<BookInfo> result = () -> {
+//            System.out.println(id);
+//            BookInfo bookInfo = new BookInfo();
+//            bookInfo.setName("abcd");
+//            return bookInfo;
+//        };
+//        return result;
+//    }
 
 
     @PostMapping
