@@ -26,3 +26,5 @@
 - File upload/download, config file size
 - Http Ansync 
 - Swagger
+- WireMock
+- Spring Security
